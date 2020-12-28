@@ -6,7 +6,7 @@ ListePromo
 
 @section('contenu')
 <h1>Liste des Promos</h1>
-<button class="btn btn-primary" href="{{ route('promos.create') }}">Create</button>
+<a href={{ route('promos.create') }} class= "btn btn-primary">Create</a>
 <table class="Promo">
   <thead>
     <tr>

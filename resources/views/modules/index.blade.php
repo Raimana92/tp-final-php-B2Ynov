@@ -1,9 +1,9 @@
 @extends('layouts.home')
 
 @section('titre')
-Module
+Home
 @endsection
 
 @section('contenu')
-<h1>Liste des Modules</h1>
+<h1>TP Final PHP Raimana</h1> 
 @endsection

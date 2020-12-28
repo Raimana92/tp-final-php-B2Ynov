@@ -12,9 +12,19 @@ class EleveController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $search = $request->get('search');
+
+        if ($search) {
+            $eleves = Eleve::where('Nom', 'like', '%'.$search.'%') 
+            -> get();
+        } else {
+            $eleves = Eleve::all();
+        }
+
+        return view('eleves.index', ['eleves'=>$eleves]);
+        
     }
 
     /**
@@ -24,7 +34,7 @@ class EleveController extends Controller
      */
     public function create()
     {
-        //
+        return view('eleves.create');
     }
 
     /**
@@ -35,7 +45,17 @@ class EleveController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Nom = $request->input('Nom');
+        $Prenom = $request->input('Prenom');
+        $Email = $request->input('Email');
+        
+        $eleve = new Eleve;
+        $eleve -> Nom = $Nom;
+        $eleve -> Prenom = $Prenom;
+        $eleve -> Email = $Email;
+        $eleve -> save();
+
+        return redirect() -> route('eleves.index');
     }
 
     /**
@@ -46,7 +66,7 @@ class EleveController extends Controller
      */
     public function show(Eleve $eleve)
     {
-        //
+        return view('eleves.show', ['eleve'=>$eleve]);
     }
 
     /**
@@ -57,7 +77,7 @@ class EleveController extends Controller
      */
     public function edit(Eleve $eleve)
     {
-        //
+        return view('eleves.edit', ['eleve'=>$eleve]);
     }
 
     /**
@@ -69,7 +89,13 @@ class EleveController extends Controller
      */
     public function update(Request $request, Eleve $eleve)
     {
-        //
+        $eleve = Eleve::find($eleve -> id);
+        $eleve -> Nom = $request -> input('Nom');
+        $eleve -> Prenom = $request -> input('Prenom');
+        $eleve -> Email = $request -> input('Email');
+        $eleve -> save();
+        
+        return redirect() -> route('eleves.index');
     }
 
     /**
@@ -78,8 +104,11 @@ class EleveController extends Controller
      * @param  \App\Eleve  $eleve
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Eleve $eleve)
+    public function destroy(eleve $eleve)
     {
-        //
+        $eleve = Eleve::find($eleve -> id);
+        $eleve-> delete();
+    
+        return redirect()->route('eleves.index');
     }
 }

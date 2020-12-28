@@ -6,17 +6,21 @@ edition
 
 @section('contenu')
 <h1>Edition</h1>
-<form method="POST" action="{{ route ('promos.update', $promo)}}">
+<form method="POST" action="{{ route ('eleves.update', $eleve)}}">
 @method('PUT')
 @csrf
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="Nom">Nom</label>
-      <input name="Nom" value={{ $promo -> Nom}} type="text" class="form-control" id="Nom" placeholder="Nom">
+      <input name="Nom" value={{ $eleve -> Nom}} type="text" class="form-control" id="Nom" placeholder="Nom">
     </div>
     <div class="form-group col-md-6">
-      <label for="Spécialité">Spécialité</label>
-      <input name="Spécialité" value={{ $promo -> Spécialité}} type="text" class="form-control" id="Spécialité" placeholder="Spécialité">
+      <label for="Prenom">Prenom</label>
+      <input name="Prenom" value={{ $eleve -> Prenom}} type="text" class="form-control" id="Prenom" placeholder="Prénom">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="Email">Email</label>
+      <input name="Email" value={{ $eleve -> Email}} type="text" class="form-control" id="Email" placeholder="Email">
     </div>
   <button type="submit" class="btn btn-primary">Modify</button>
 </form>
