@@ -12,9 +12,19 @@ class ModuleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $search = $request->get('search');
+
+        if ($search) {
+            $modules = Module::where('Nom', 'like', '%'.$search.'%') 
+            -> get();
+        } else {
+            $modules = Module::all();
+        }
+
+        return view('modules.index', ['modules'=>$modules]);
+        
     }
 
     /**
@@ -24,7 +34,7 @@ class ModuleController extends Controller
      */
     public function create()
     {
-        //
+        return view('modules.create');
     }
 
     /**
@@ -35,7 +45,15 @@ class ModuleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Nom = $request->input('Nom');
+        $Description = $request->input('Description');
+        
+        $module = new Module;
+        $module -> Nom = $Nom;
+        $module -> Description = $Description;
+        $module -> save();
+
+        return redirect() -> route('modules.index');
     }
 
     /**
@@ -46,7 +64,7 @@ class ModuleController extends Controller
      */
     public function show(Module $module)
     {
-        //
+        return view('modules.show', ['module'=>$module]);
     }
 
     /**
@@ -57,7 +75,7 @@ class ModuleController extends Controller
      */
     public function edit(Module $module)
     {
-        //
+        return view('modules.edit', ['module'=>$module]);
     }
 
     /**
@@ -69,7 +87,12 @@ class ModuleController extends Controller
      */
     public function update(Request $request, Module $module)
     {
-        //
+        $module = Module::find($module -> id);
+        $module -> Nom = $request -> input('Nom');
+        $module -> Description = $request -> input('Description');
+        $module -> save();
+        
+        return redirect() -> route('modules.index');
     }
 
     /**
@@ -78,8 +101,11 @@ class ModuleController extends Controller
      * @param  \App\Module  $module
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Module $module)
+    public function destroy(module $module)
     {
-        //
+        $module = Module::find($module -> id);
+        $module-> delete();
+    
+        return redirect()->route('modules.index');
     }
 }
