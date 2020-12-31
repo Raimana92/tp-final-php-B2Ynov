@@ -17,14 +17,30 @@ class EleveController extends Controller
         $search = $request->get('search');
 
         if ($search) {
-            $eleves = Eleve::where('Nom', 'like', '%'.$search.'%')
+            $eleves = Eleve::where('Nom', 'like', '%'.$search.'%') 
             -> get();
-        } else {
+        } 
+        else {
+            $eleves = Eleve::all();
+        }
+
+        if ($search) {
+            $eleves = Eleve::where('Prenom', 'like', '%'.$search.'%') 
+            -> get();
+        } 
+        else {
+            $eleves = Eleve::all();
+        }
+
+        if ($search) {
+            $eleves = Eleve::where('Email', 'like', '%'.$search.'%') 
+            -> get();
+        } 
+        else {
             $eleves = Eleve::all();
         }
 
         return view('eleves.index', ['eleves'=>$eleves]);
-
     }
 
     /**

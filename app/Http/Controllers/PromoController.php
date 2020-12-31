@@ -19,12 +19,20 @@ class PromoController extends Controller
         if ($search) {
             $promos = Promo::where('Nom', 'like', '%'.$search.'%') 
             -> get();
-        } else {
+        } 
+        else {
+            $promos = Promo::all();
+        }
+
+        if ($search) {
+            $promos = Promo::where('Spécialité', 'like', '%'.$search.'%') 
+            -> get();
+        } 
+        else {
             $promos = Promo::all();
         }
 
         return view('promos.index', ['promos'=>$promos]);
-        
     }
 
     /**

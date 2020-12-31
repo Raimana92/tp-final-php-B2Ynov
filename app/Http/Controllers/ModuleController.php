@@ -19,7 +19,8 @@ class ModuleController extends Controller
         if ($search) {
             $modules = Module::where('Nom', 'like', '%'.$search.'%') 
             -> get();
-        } else {
+        } 
+        else {
             $modules = Module::all();
         }
 
