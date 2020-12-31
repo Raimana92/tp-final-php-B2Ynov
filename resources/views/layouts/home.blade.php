@@ -45,7 +45,7 @@
       
       <a class="nav-link" href="{{ route('promos.index') }}">Promo</a>
       <a class="nav-link" href="{{ route('modules.index') }}">Module</a>
-      <a class="nav-link" href="{{ route('eleves.index') }}">Eleve</a>
+      <a class="nav-link" href="{{ route('students.index') }}">Eleve</a>
       
       <li class="nav-item">
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>

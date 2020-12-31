@@ -11,8 +11,8 @@ class Module extends Model
         return $this->belongsToMany('Promo');
     }
 
-    public function eleves()
+    public function students()
     {
-        return $this->belongsToMany('Eleve');
+        return $this->belongsToMany('Student');
     }
 }

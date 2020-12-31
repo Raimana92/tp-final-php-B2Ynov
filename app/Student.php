@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Promo extends Model
+class Student extends Model
 {
-    public function students()
+    public function promos()
     {
-        return $this->hasMany('Student');
+        return $this->belongsTo('Promo');
     }
 
     public function modules()

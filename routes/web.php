@@ -20,3 +20,4 @@ Route::get('/', function () {
 Route::resource('promos', 'PromoController');
 Route::resource('modules', 'ModuleController');
 Route::resource('eleves', 'EleveController');
+Route::resource('students', 'StudentController');
