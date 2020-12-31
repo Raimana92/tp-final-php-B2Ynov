@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::resource('promos', 'PromoController');
 Route::resource('modules', 'ModuleController');
 Route::resource('eleves', 'EleveController');
+
+$promos = factory('App\Promo');
+$eleves = factory('App\Eleve');
+$modules = factory('App\Modules');

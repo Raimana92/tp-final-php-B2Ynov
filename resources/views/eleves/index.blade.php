@@ -6,7 +6,7 @@ ListeEleve
 
 @section('contenu')
 <h1>Liste des Eleves</h1>
-<a href={{ route('eleves.create') }} class= "btn btn-primary">Create</a>
+<a href="{{ route('eleves.create') }}" class= "btn btn-primary">Create</a>
 <table class="table">
   <thead>
     <tr>
@@ -21,7 +21,7 @@ ListeEleve
     <tr>
       <td>{{ $eleve-> Nom }}</td>
       <td>{{ $eleve-> Prenom }}</td>
-      <td>{{ $eleve-> Spécialité }}</td>
+      <td>{{ $eleve-> Email }}</td>
       <td>
         <a class="btn btn-info" href="{{ route('eleves.edit', $eleve)}}">Edition</a>
       </td>

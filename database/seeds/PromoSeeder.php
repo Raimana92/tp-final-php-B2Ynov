@@ -12,16 +12,6 @@ class PromoSeeder extends Seeder
     public function run()
     
     {
-        DB::table('promos')->insert(
-            [
-                [
-                    'Nom' => 'B1', 
-                    'Spécialité' => 'Informatique',
-                ]
-            ]
-        );
-        factory(Promo::class, 25)->create()->each(function ($promo) {
-            $promo->save();           
-        });
+        //
     }
 }
