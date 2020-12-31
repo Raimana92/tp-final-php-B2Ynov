@@ -7,7 +7,7 @@ ListeModule
 @section('contenu')
 <h1>Liste des Modules</h1>
 <a href="{{ route('modules.create') }} " class= "btn btn-primary">Create</a>
-<table class="Module">
+<table class="table">
   <thead>
     <tr>
       <th scope="col">Nom</th>

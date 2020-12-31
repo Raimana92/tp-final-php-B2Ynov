@@ -7,7 +7,7 @@ ListeEleve
 @section('contenu')
 <h1>Liste des Eleves</h1>
 <a href={{ route('eleves.create') }} class= "btn btn-primary">Create</a>
-<table class="Eleve">
+<table class="table">
   <thead>
     <tr>
       <th scope="col">Nom</th>
